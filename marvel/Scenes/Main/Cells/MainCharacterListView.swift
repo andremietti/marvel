@@ -16,7 +16,9 @@ class MainCharacterListView: SceneView {
     }
     private let imageView = configure(UIImageView()) {
         $0.contentMode = .scaleAspectFit
-        $0.backgroundColor = .clear
+        $0.backgroundColor = .darkGray
+        $0.layer.cornerRadius = 10.0
+        $0.layer.masksToBounds = true
     }
 
     private let titleLabel = configure(UILabel()) {

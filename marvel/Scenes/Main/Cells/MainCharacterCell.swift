@@ -19,7 +19,6 @@ class MainCharacterCell: UICollectionViewCell {
         super.init(frame: frame)
         setup()
         setupConstraints()
-        backgroundColor = .orange
     }
 
     required init?(coder: NSCoder) {
