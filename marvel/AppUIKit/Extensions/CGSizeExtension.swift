@@ -11,7 +11,7 @@ extension CGSize {
 
     static func makeSize() -> CGSize {
         let screen = UIScreen.main.bounds
-        let side = (screen.width / 2)
+        let side = (screen.width / 2.5)
         return CGSize(width: side, height: side)
     }
 }

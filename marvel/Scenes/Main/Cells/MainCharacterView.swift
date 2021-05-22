@@ -19,7 +19,7 @@ class MainCharacterView: SceneView {
     }
 
     private let imageView = configure(UIImageView()) {
-        $0.contentMode = .scaleAspectFit
+        $0.contentMode = .redraw
         $0.backgroundColor = .darkGray
         $0.layer.cornerRadius = 10.0
         $0.layer.masksToBounds = true

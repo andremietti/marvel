@@ -59,12 +59,12 @@ class MainViewModel: MainViewModelProtocol {
                     if currentPage > 0 {
                         guard let data = response.data else { return }
                         self.preparePaginationContent(data: data)
-                        self.offset += 1
+                        self.offset += Int64(data.limit.defaultValue)
                         return
                     }
                     
                     guard let data = response.data else { return }
-                    self.offset += 1
+                    self.offset += Int64(data.limit.defaultValue)
                     self.characters = CharactersDataModel(character: data)
                     self.prepareMarvelCollectionViewContent()
                     self.prepareMarvelTableViewContent()

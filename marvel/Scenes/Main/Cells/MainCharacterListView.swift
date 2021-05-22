@@ -15,14 +15,14 @@ class MainCharacterListView: SceneView {
         }
     }
     private let imageView = configure(UIImageView()) {
-        $0.contentMode = .scaleAspectFit
+        $0.contentMode = .scaleToFill
         $0.backgroundColor = .darkGray
         $0.layer.cornerRadius = 10.0
         $0.layer.masksToBounds = true
     }
 
     private let titleLabel = configure(UILabel()) {
-        $0.font = UIFont.boldSystemFont(ofSize: 18)
+        $0.font = UIFont.boldSystemFont(ofSize: 16)
         $0.numberOfLines = 0
         $0.textAlignment = .left
         $0.textColor = .white
