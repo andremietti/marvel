@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E715F4626E64FF800F3FBB2 /* MainCoordinatorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E715F4526E64FF800F3FBB2 /* MainCoordinatorSpy.swift */; };
+		0E715F4E26E6913C00F3FBB2 /* MainServiceProtocolSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E715F4D26E6913C00F3FBB2 /* MainServiceProtocolSpy.swift */; };
+		0E715F5426E6A8E900F3FBB2 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E715F5326E6A8E900F3FBB2 /* MainViewModelTests.swift */; };
+		0E715F5C26E6A94600F3FBB2 /* MainViewModelSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E715F5B26E6A94600F3FBB2 /* MainViewModelSpy.swift */; };
+		0E715F6126E6AC3E00F3FBB2 /* MainRetrieveCharactersUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E715F6026E6AC3E00F3FBB2 /* MainRetrieveCharactersUseCaseSpy.swift */; };
 		0E85A26D26554BC4005DA59C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E85A26B26554BC4005DA59C /* Main.storyboard */; };
 		0E85A27026554BC4005DA59C /* marvel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E85A26E26554BC4005DA59C /* marvel.xcdatamodeld */; };
 		0E85A27526554BC6005DA59C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E85A27326554BC6005DA59C /* LaunchScreen.storyboard */; };
@@ -105,6 +110,11 @@
 
 /* Begin PBXFileReference section */
 		03E0654DB317877BAC75B946 /* Pods-marvelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvelTests.debug.xcconfig"; path = "Target Support Files/Pods-marvelTests/Pods-marvelTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0E715F4526E64FF800F3FBB2 /* MainCoordinatorSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorSpy.swift; sourceTree = "<group>"; };
+		0E715F4D26E6913C00F3FBB2 /* MainServiceProtocolSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainServiceProtocolSpy.swift; sourceTree = "<group>"; };
+		0E715F5326E6A8E900F3FBB2 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
+		0E715F5B26E6A94600F3FBB2 /* MainViewModelSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelSpy.swift; sourceTree = "<group>"; };
+		0E715F6026E6AC3E00F3FBB2 /* MainRetrieveCharactersUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRetrieveCharactersUseCaseSpy.swift; sourceTree = "<group>"; };
 		0E85A26226554BC4005DA59C /* marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E85A26C26554BC4005DA59C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0E85A26F26554BC4005DA59C /* marvel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = marvel.xcdatamodel; sourceTree = "<group>"; };
@@ -223,6 +233,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E715F4426E64FDD00F3FBB2 /* Spy */ = {
+			isa = PBXGroup;
+			children = (
+				0E715F4526E64FF800F3FBB2 /* MainCoordinatorSpy.swift */,
+				0E715F4D26E6913C00F3FBB2 /* MainServiceProtocolSpy.swift */,
+				0E715F5B26E6A94600F3FBB2 /* MainViewModelSpy.swift */,
+				0E715F6026E6AC3E00F3FBB2 /* MainRetrieveCharactersUseCaseSpy.swift */,
+			);
+			path = Spy;
+			sourceTree = "<group>";
+		};
+		0E715F5226E6A8DA00F3FBB2 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0E715F5326E6A8E900F3FBB2 /* MainViewModelTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		0E85A25926554BC4005DA59C = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +294,8 @@
 		0E85A27E26554BC6005DA59C /* marvelTests */ = {
 			isa = PBXGroup;
 			children = (
+				0E715F5226E6A8DA00F3FBB2 /* Tests */,
+				0E715F4426E64FDD00F3FBB2 /* Spy */,
 				0E85A27F26554BC6005DA59C /* marvelTests.swift */,
 				0E85A28126554BC6005DA59C /* Info.plist */,
 			);
@@ -976,7 +1007,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E715F4626E64FF800F3FBB2 /* MainCoordinatorSpy.swift in Sources */,
+				0E715F6126E6AC3E00F3FBB2 /* MainRetrieveCharactersUseCaseSpy.swift in Sources */,
 				0E85A28026554BC6005DA59C /* marvelTests.swift in Sources */,
+				0E715F4E26E6913C00F3FBB2 /* MainServiceProtocolSpy.swift in Sources */,
+				0E715F5C26E6A94600F3FBB2 /* MainViewModelSpy.swift in Sources */,
+				0E715F5426E6A8E900F3FBB2 /* MainViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

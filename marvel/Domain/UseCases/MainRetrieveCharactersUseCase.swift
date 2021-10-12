@@ -15,7 +15,7 @@ class MainRetrieveCharactersUseCase {
     }
 }
 
-extension MainRetrieveCharactersUseCase:MainRetrieveCharactersUseCaseProtocol {
+extension MainRetrieveCharactersUseCase: MainRetrieveCharactersUseCaseProtocol {
     func execute(offset: Int64, completion: @escaping GenericResult<CharacterDataResponse>) {
         service.retrieveMarvelCharacters(offset: offset, completion: completion)
     }
