@@ -34,8 +34,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         rootView.delegate = self
-        view.backgroundColor = .white
-        title = "Marvels Characters"
         setupBinds()
         getCharacters()
     }
@@ -49,6 +47,7 @@ class MainViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = .red
         navigationController?.navigationBar.backgroundColor = .black
+        title = "Marvels Characters"
     }
 
     private func setupBinds() {
