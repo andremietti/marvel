@@ -23,16 +23,4 @@ extension CharactersResponse: Decodable {
         case count
         case results
     }
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        offset = try container.decodeIfPresent(Int.self, forKey: .offset)
-        limit = try container.decodeIfPresent(Int.self, forKey: .limit)
-        total = try container.decodeIfPresent(Int.self, forKey: .total)
-        count = try container.decodeIfPresent(Int.self, forKey: .count)
-
-        results = try container.decodeIfPresent([CharacterResponse].self, forKey: .results) ?? []
-    }
-
 }

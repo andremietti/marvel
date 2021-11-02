@@ -19,10 +19,10 @@ class AppCoordinator: Coordinator {
     }
 
     public func start() {
-        presentMainFLow()
+        presentMainFlow()
     }
 
-    private func presentMainFLow() {
+    private func presentMainFlow() {
         let mainCoordinator = coordinatorFactory.makeMainCoordinator()
         mainCoordinator.coordinatorDelegate = self
         mainCoordinator.start()
@@ -32,6 +32,5 @@ class AppCoordinator: Coordinator {
 }
 
 extension AppCoordinator: MainCoordinatorDelegate {
-    func didCloseScene(_ coordinator: Coordinator) {
-    }
+    func didCloseScene(_ coordinator: Coordinator) {}
 }

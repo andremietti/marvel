@@ -9,4 +9,5 @@ import UIKit
 
 protocol MainFactory {
     func makeMainViewController() -> MainViewController
+    func makeDetailViewController(character: CharacterResponseDataModel) -> DetailViewController
 }

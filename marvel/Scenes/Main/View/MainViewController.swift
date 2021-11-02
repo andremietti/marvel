@@ -28,7 +28,6 @@ class MainViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.addSceneViewToSafeArea(rootView)
-        self.automaticallyAdjustsScrollViewInsets = false
     }
 
     override func viewDidLoad() {
@@ -36,7 +35,7 @@ class MainViewController: UIViewController {
 
         rootView.delegate = self
         view.backgroundColor = .white
-        self.title = "Marvels Characters"
+        title = "Marvels Characters"
         setupBinds()
         getCharacters()
     }
@@ -83,33 +82,20 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: MainViewDelegate {
+
     func didRefresh() {
         isFromRefreshControl = true
         getCharacters()
     }
 
-    func didMove(to index: Int) {
-
-    }
-
-    func showInstallment() {
-
-    }
+    func didMove(to index: Int) {}
 
     func loadMoreData() {
         isFromRefreshControl = true
         getCharacters()
     }
-}
 
-extension MainViewController: MainViewModelCoordinating {
-    func showDetailScene() {
-
+    func didSelectCharacter(character: CharacterResponseDataModel) {
+        viewModel.showCharacterDetail(character: character)
     }
-
-    func closeScene() {
-
-    }
-
-
 }

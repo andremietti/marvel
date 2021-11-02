@@ -16,12 +16,17 @@ class MainFactoryImplementation: DependencyProtocol {
     }
 }
 
-//MARK: Implement LoanFactory
+//MARK: Implement MainFactory
 extension MainFactoryImplementation: MainFactory {
 
     func makeMainViewController() -> MainViewController {
         let viewModel = resolver.resolveSafe(MainViewModelProtocol.self)
         return MainViewController(viewModel: viewModel)
+    }
+
+    func makeDetailViewController(character: CharacterResponseDataModel) -> DetailViewController {
+        let viewModel = resolver.resolveSafe(DetailViewModelProtocol.self, argument: character)
+        return DetailViewController(viewModel: viewModel)
     }
 }
 

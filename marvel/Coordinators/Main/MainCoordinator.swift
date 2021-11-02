@@ -55,12 +55,19 @@ public class MainCoordinator: Coordinator {
         navigationController.presentedViewController?.dismiss(animated: false)
         self.featureNavigationController = featureNavigationController
         navigationController.present(featureNavigationController, animated: true)
+    }
 
+    private func showDetail(character: CharacterResponseDataModel) {
+        let detailViewController = mainFactory.makeDetailViewController(character: character)
+        guard let mainNavigation = navigationController.presentedViewController as? UINavigationController else { return }
+        mainNavigation.pushViewController(detailViewController, animated: true)
     }
 
 }
 
 extension MainCoordinator: MainViewModelCoordinating {
-    func showDetailScene() {}
+    func showDetailScene(character: CharacterResponseDataModel) {
+        showDetail(character: character)
+    }
     public func closeScene() {}
 }

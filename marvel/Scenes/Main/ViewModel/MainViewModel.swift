@@ -7,9 +7,9 @@
 
 import Foundation
 
-protocol MainViewModelInput: CloseableViewModel {
+protocol MainViewModelInput {
     func getCharacters()
-    func didSelectCharacter()
+    func showCharacterDetail(character: CharacterResponseDataModel)
 }
 
 protocol MainViewModelOutput {
@@ -19,8 +19,9 @@ protocol MainViewModelOutput {
     var setMarvelTableView: Observable<[CharacterResponseDataModel]> { get }
 }
 
-protocol MainViewModelCoordinating: CloseableCoordinating {
-    func showDetailScene()
+protocol MainViewModelCoordinating {
+    func showDetailScene(character: CharacterResponseDataModel)
+    func closeScene()
 }
 
 protocol MainViewModelProtocol: MainViewModelInput, MainViewModelOutput {}
@@ -105,17 +106,12 @@ class MainViewModel: MainViewModelProtocol {
         self.setMarvelTableView.onNext(listItems)
     }
 
-
-    func didSelectCharacter() {
-        #warning("implement here")
+    func showCharacterDetail(character: CharacterResponseDataModel) {
+        coordinator.showDetailScene(character: character)
     }
 
     func closeScene() {
         coordinator.closeScene()
-    }
-
-    func confirmLoan() {
-        coordinator.showDetailScene()
     }
 
     func removeDuplicateElements(dataModel: [CharacterResponseDataModel]) -> [CharacterResponseDataModel] {

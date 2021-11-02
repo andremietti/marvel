@@ -28,18 +28,4 @@ extension CharacterDataResponse: Decodable {
         case data
     }
 
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        code = try container.decodeIfPresent(Int.self, forKey: .code)
-        status = try container.decodeIfPresent(String.self, forKey: .status)
-        copyright = try container.decodeIfPresent(String.self, forKey: .copyright)
-        attributionText = try container.decodeIfPresent(String.self, forKey: .attributionText)
-        attributionHTML = try container.decodeIfPresent(String.self, forKey: .attributionHTML)
-        etag = try container.decodeIfPresent(String.self, forKey: .etag)
-
-
-        data = try container.decodeIfPresent(CharactersResponse.self, forKey: .data)
-    }
-
 }

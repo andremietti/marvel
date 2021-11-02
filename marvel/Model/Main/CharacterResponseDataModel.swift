@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CharacterResponseDataModel {
+public class CharacterResponseDataModel {
 
     var id: Int?
     var name: String?

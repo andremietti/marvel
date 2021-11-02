@@ -23,5 +23,4 @@ extension CoordinatorFactoryImplementation: CoordinatorFactory {
     func makeMainCoordinator() -> MainCoordinator {
         resolver.resolveSafe(MainCoordinator.self)
     }
-
 }

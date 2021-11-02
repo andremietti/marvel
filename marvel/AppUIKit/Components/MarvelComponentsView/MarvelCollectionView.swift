@@ -14,7 +14,7 @@ protocol MarvelCollectionViewProtocol: AnyObject {
 
 class MarvelCollectionView: SceneView {
 
-    private var delegate: MarvelCollectionViewProtocol?
+    weak var delegate: MarvelCollectionViewProtocol?
     private let cellIdentifier = MainCharacterCell().reuseIdentifier.defaultValue
     private var characters: [CharacterResponseDataModel]?
 

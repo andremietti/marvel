@@ -17,10 +17,10 @@ extension ThumbnailResponse: Decodable {
         case path
         case thumbnailExtension = "extension"
     }
+}
 
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        path = try container.decodeIfPresent(String.self, forKey: .path)
-        thumbnailExtension = try container.decodeIfPresent(String.self, forKey: .thumbnailExtension)
+extension ThumbnailResponse {
+    var thumbnailUrl: URL? {
+        return URL(string: (self.path.defaultValue + "." + self.thumbnailExtension.defaultValue))
     }
 }

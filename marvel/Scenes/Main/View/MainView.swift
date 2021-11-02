@@ -10,11 +10,11 @@ import UIKit
 public protocol MainViewDelegate: AnyObject {
     func didRefresh()
     func didMove(to index: Int)
-    func showInstallment()
+    func didSelectCharacter(character: CharacterResponseDataModel)
     func loadMoreData()
 }
 
-class MainView: SceneView {
+final class MainView: SceneView {
 
     let mainScreen = UIScreen.main.bounds
     lazy var thirtyPercent: CGFloat = 0.3
@@ -37,6 +37,7 @@ class MainView: SceneView {
         setupView()
         backgroundColor = .black
         marvelTableView.delegate = self
+        marvelCollectionView.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -51,10 +52,10 @@ class MainView: SceneView {
 
     override func setupConstraints() {
         containerView.constraint {[
-            $0.topAnchor.constraint(equalTo: self.topAnchor),
-            $0.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            $0.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            $0.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            $0.topAnchor.constraint(equalTo: topAnchor),
+            $0.bottomAnchor.constraint(equalTo: bottomAnchor),
+            $0.leadingAnchor.constraint(equalTo: leadingAnchor),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor)
         ]}
 
         marvelCollectionView.constraint {[
@@ -66,9 +67,9 @@ class MainView: SceneView {
 
         marvelTableView.constraint {[
             $0.topAnchor.constraint(equalTo: marvelCollectionView.bottomAnchor, constant: 0.0),
-            $0.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            $0.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            $0.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            $0.leadingAnchor.constraint(equalTo: leadingAnchor),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor),
+            $0.bottomAnchor.constraint(equalTo: bottomAnchor)
         ]}
     }
 
@@ -91,10 +92,17 @@ extension MainView: MarvelTableViewDelegate {
     }
 
     func didTapOnCharacter(character: CharacterResponseDataModel) {
-
+        delegate?.didSelectCharacter(character: character)
     }
 
     func loadMoreData() {
         delegate?.loadMoreData()
+    }
+}
+
+extension MainView: MarvelCollectionViewProtocol {
+
+    func didSelectMarvelCharacter(character: CharacterResponseDataModel) {
+        delegate?.didSelectCharacter(character: character)
     }
 }
