@@ -48,7 +48,6 @@ class DetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         setupNavigationController()
     }
 
@@ -57,7 +56,6 @@ class DetailViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .red
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.topItem?.title = .defaultValue
-
         title = "Detail"
     }
 
