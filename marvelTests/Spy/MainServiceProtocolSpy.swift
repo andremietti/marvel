@@ -24,22 +24,22 @@ class MainServiceProtocolSpy: MainServiceProtocol {
     }
 
     private func makeCharacterDataResponse() -> CharacterDataResponse {
-        return CharacterDataResponse(code: 200, status: "Ok", copyright: nil, attributionText: nil, attributionHTML: nil, etag: nil, data: makeCharactersResponse())
+        return CharacterDataResponse.makeFake()
     }
 
     private func makeCharactersResponse() -> CharactersResponse {
-        return CharactersResponse(offset: 0, limit: 20, total: 200, count: 20, results: makeCharacterResponse())
+        return CharactersResponse.makeFake()
     }
 
     private func makeCharacterResponse() -> [CharacterResponse] {
-        var results = [CharacterResponse]()
-        for _ in 0...10 {
-            results.append(CharacterResponse(id: 2, name: "Mock teste", characterDescription: "Descrição do mock", thumbnail: ThumbnailResponse(path: thumbnailPath, thumbnailExtension: thumbnailExtension)))
-        }
-        return results
+        return CharacterResponse.makeFakeArray()
     }
 
     private func makeError() -> ResponseError {
-        return ResponseError(title: "Error mock", message: "Message mock")
+        return ResponseError.makeFake()
+    }
+
+    func makeCharacterResponse() -> CharacterResponse {
+        return makeCharacterResponse().first!
     }
 }

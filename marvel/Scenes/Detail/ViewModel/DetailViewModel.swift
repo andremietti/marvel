@@ -38,8 +38,8 @@ class DetailViewModel: DetailViewModelProtocol {
     }
 
     func loadContent() {
-        setName.onNext(character?.name ?? Localize.EmptyState.descriptionNotFound.rawValue)
-        setDescription.onNext(character?.characterDescription ?? Localize.EmptyState.descriptionNotFound.rawValue)
+        setName.onNext(character?.name ?? EmptyStateLocalize.descriptionNotFound.rawValue)
+        setDescription.onNext(character?.characterDescription ?? EmptyStateLocalize.descriptionNotFound.rawValue)
         guard let url = character?.thumbnail?.thumbnailUrl else { return }
         setImage.onNext(url)
     }

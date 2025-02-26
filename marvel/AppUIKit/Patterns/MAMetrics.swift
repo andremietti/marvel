@@ -12,4 +12,5 @@ public struct MAMetrics {
     public static let mainLeadingSpace: CGFloat = 20
     public static let mainTrailingSpace: CGFloat = -40
     public static let mainBottomSpace: CGFloat = -20
+    public static let mainBounds = UIScreen.main.bounds
 }

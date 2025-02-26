@@ -17,6 +17,7 @@ class MainCharacterTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+
         tintColor = .white
         let chevronImageView = UIImageView(image: UIImage(named: "chevron_right_white"))
         accessoryView = chevronImageView

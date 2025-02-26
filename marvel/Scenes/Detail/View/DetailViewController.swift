@@ -56,7 +56,7 @@ class DetailViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .red
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.topItem?.title = .defaultValue
-        title = "Detail"
+        title = DetailGeneralLocalize.title.rawValue
     }
 
     // MARK: - Setup

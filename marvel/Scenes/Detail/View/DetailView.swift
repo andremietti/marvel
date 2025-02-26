@@ -15,14 +15,12 @@ public protocol DetailViewDelegate: AnyObject {}
 class DetailView: SceneView {
 
     // MARK: - Properties
-    public var delegate: DetailViewDelegate?
     private let containerView = configure(UIView()) {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = .black
     }
 
     private let headerImageView = configure(UIImageView()) {
-        $0.translatesAutoresizingMaskIntoConstraints = false
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.contentMode = .scaleToFill
         $0.clipsToBounds = true
@@ -43,6 +41,8 @@ class DetailView: SceneView {
         $0.textColor = .white
         $0.font = UIFont.systemFont(ofSize: 20.0)
     }
+
+    public var delegate: DetailViewDelegate?
 
     // MARK: - setup
     override init(frame: CGRect) {
@@ -93,16 +93,16 @@ class DetailView: SceneView {
     }
 
     // MARK: - Functional methods
-
     func setName(name: String) {
         titleLabel.text = name
     }
 
     func setDescription(description: String) {
-        descriptionTextView.text = description
+        descriptionTextView.text = description == .defaultValue ? EmptyStateLocalize.descriptionNotFound.rawValue : description
     }
 
     func setIMage(imageUrl: URL) {
         headerImageView.kf.setImage(with: imageUrl)
     }
+    
 }

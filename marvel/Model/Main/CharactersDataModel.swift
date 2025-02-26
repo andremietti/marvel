@@ -25,12 +25,13 @@ class CharactersDataModel {
 
     private func getCharacterResponseDataModel(characters: [CharacterResponse]?) -> [CharacterResponseDataModel] {
         var localCharacters = [CharacterResponseDataModel]()
-        if !(characters?.isEmpty ?? .defaultValue) {
-            for char in characters! {
-                let c = CharacterResponseDataModel(chatacter: char)
-                localCharacters.append(c)
-            }
+
+        guard let characters = characters  else { return [] }
+        for char in characters {
+            let c = CharacterResponseDataModel(chatacter: char)
+            localCharacters.append(c)
         }
+
         return localCharacters
     }
 }

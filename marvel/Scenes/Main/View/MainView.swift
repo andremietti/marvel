@@ -16,7 +16,6 @@ public protocol MainViewDelegate: AnyObject {
 
 final class MainView: SceneView {
 
-    let mainScreen = UIScreen.main.bounds
     lazy var thirtyPercent: CGFloat = 0.3
 
     public var delegate: MainViewDelegate?

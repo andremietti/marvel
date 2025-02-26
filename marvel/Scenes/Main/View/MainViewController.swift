@@ -47,7 +47,7 @@ class MainViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = .red
         navigationController?.navigationBar.backgroundColor = .black
-        title = "Marvels Characters"
+        title = MainGeneralLocalize.title.rawValue
     }
 
     private func setupBinds() {
@@ -60,8 +60,8 @@ class MainViewController: UIViewController {
         viewModel.setMarvelTableView.observe(on: self) { [weak self] result in
             self?.rootView.loadCharactersInTableView(characters: result)
         }
-        viewModel.showError.observe(on: self) {  [weak self] title, message in
-
+        viewModel.showError.observe(on: self) { title, message in
+            self.showErrorView(title: title, message: message)
         }
     }
 
@@ -73,9 +73,16 @@ class MainViewController: UIViewController {
             loaderView.startAnimation()
             return
         }
+
         rootView.endRefresh()
         loaderView.stopAnimation()
         loaderView.removeFromSuperview()
+    }
+
+    private func showErrorView(title: String, message: String) {
+        let genericErrorView = GenericErrorView(frame: view.frame)
+        genericErrorView.setTitle(title: title, message: message)
+        genericErrorView.showGenericErrorView()
     }
 
 }

@@ -33,7 +33,7 @@ class MarvelTableView: SceneView {
         $0.separatorInset = .zero
         $0.frame = self.frame
         $0.rowHeight = UITableView.automaticDimension
-        $0.estimatedRowHeight = 100.0
+        $0.estimatedRowHeight = 140.0
         $0.tableFooterView = UIView()
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = .black
@@ -93,10 +93,13 @@ extension MarvelTableView: UITableViewDataSource {
         return cell
     }
 
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 140.0
+    }
 }
 
 extension MarvelTableView: UIScrollViewDelegate {

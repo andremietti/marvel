@@ -8,16 +8,16 @@
 import Foundation
 @testable import marvel
 
-class MainCoordinatorSpy: MainCoordinatorDelegate {
+class MainCoordinatorSpy: MainViewModelCoordinating {
 
-    var sceneCLosed = 0
-    var coordinatorExit = 0
+    var sceneClosedCalled = 0
+    var showDetailSceneCalled = 0
 
-    func didCloseScene(_ coordinator: Coordinator) {
-        sceneCLosed += 1
+    func showDetailScene(character: CharacterResponseDataModel) {
+        showDetailSceneCalled += 1
     }
 
-    func coordinatorDidExit(_ coordinator: Coordinator) {
-        coordinatorExit += 1
+    func closeScene() {
+        sceneClosedCalled += 1
     }
 }

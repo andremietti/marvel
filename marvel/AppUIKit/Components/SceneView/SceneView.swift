@@ -8,6 +8,7 @@
 import UIKit
 
 class SceneView: UIView, ConfigurableView {
+
     var contentView = UIView()
 
     override var backgroundColor: UIColor? {
@@ -34,8 +35,18 @@ class SceneView: UIView, ConfigurableView {
         setupConstraints()
     }
 
-    func buildViewHierarchy() {}
-    func setupConstraints() {}
+    func buildViewHierarchy() {
+        addSubview(contentView)
+    }
+
+    func setupConstraints() {
+        contentView.constraint {[
+            $0.topAnchor.constraint(equalTo: self.topAnchor),
+            $0.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            $0.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            $0.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ]}
+    }
 
     override func addSubview(_ view: UIView) {
         if view == contentView {

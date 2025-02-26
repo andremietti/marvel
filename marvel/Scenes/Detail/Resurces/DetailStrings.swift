@@ -7,23 +7,11 @@
 
 import Foundation
 
-// MARK: - Representable Protocols
-
-protocol LocalizeRepresentable: RawRepresentable {
-    var localized: String { get }
+enum EmptyStateLocalize: String, LocalizeRepresentable {
+    case descriptionNotFound = "No description here \u{1F641}"
 }
 
-// MARK: - Representable Protocols Extensions
-
-extension LocalizeRepresentable where RawValue == String {
-    var localized: String {
-        return NSLocalizedString(rawValue, comment: "")
-    }
-}
-
-enum Localize {
-    enum EmptyState: String, LocalizeRepresentable {
-        case descriptionNotFound = "No description for this."
-    }
+enum DetailGeneralLocalize: String {
+    case title = "Detail"
 }
 

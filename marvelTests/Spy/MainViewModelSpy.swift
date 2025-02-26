@@ -17,6 +17,7 @@ class MainViewModelSpy: MainViewModelProtocol {
 
     var getCharactersCalled = 0
     var didSelectCharacterCalled = 0
+    var showCharacterDetailCalled = 0
     var closeSceneCalled = 0
 
     func getCharacters() {
@@ -27,7 +28,12 @@ class MainViewModelSpy: MainViewModelProtocol {
         didSelectCharacterCalled += 1
     }
 
+    func showCharacterDetail(character: CharacterResponseDataModel) {
+        showCharacterDetailCalled += 1
+    }
+
     func closeScene() {
         closeSceneCalled += 1
     }
+
 }

@@ -15,7 +15,7 @@ class MainCharacterListView: SceneView {
         }
     }
     private let imageView = configure(UIImageView()) {
-        $0.contentMode = .scaleToFill
+        $0.contentMode = .scaleAspectFill
         $0.backgroundColor = .darkGray
         $0.layer.cornerRadius = 10.0
         $0.layer.masksToBounds = true
@@ -38,8 +38,7 @@ class MainCharacterListView: SceneView {
         imageView.constraint {[
             $0.topAnchor.constraint(equalTo: self.topAnchor, constant: MAMetrics.mainTopSpace),
             $0.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: MAMetrics.mainLeadingSpace),
-            $0.heightAnchor.constraint(equalToConstant: 100.0),
-            $0.widthAnchor.constraint(equalToConstant: 100.0),
+            $0.widthAnchor.constraint(equalToConstant: Metrics.ImageView.side),
             $0.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: MAMetrics.mainBottomSpace)
         ]}
 
