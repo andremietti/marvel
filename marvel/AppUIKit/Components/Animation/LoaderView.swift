@@ -10,7 +10,7 @@ import Lottie
 
 class LoaderView: SceneView {
 
-    lazy var animationView = AnimationView()
+    lazy var animationView = LottieAnimationView()
 
     override func buildViewHierarchy() {
         addSubview(animationView)

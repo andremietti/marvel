@@ -29,10 +29,12 @@ class MarvelCollectionView: SceneView {
         $0.showsVerticalScrollIndicator = false
         $0.showsHorizontalScrollIndicator = false
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = UIColor(_colorLiteralRed: 128.0/100, green: 128.0/100, blue: 128.0/100, alpha: 0.15)
         $0.reloadData()
     }
 
     override func buildViewHierarchy() {
+        self.backgroundColor = .black
         addSubview(collectionView)
     }
 

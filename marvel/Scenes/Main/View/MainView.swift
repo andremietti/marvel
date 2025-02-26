@@ -65,7 +65,7 @@ final class MainView: SceneView {
         ]}
 
         marvelTableView.constraint {[
-            $0.topAnchor.constraint(equalTo: marvelCollectionView.bottomAnchor, constant: 0.0),
+            $0.topAnchor.constraint(equalTo: marvelCollectionView.bottomAnchor, constant: MAMetrics.mainTopSpace),
             $0.leadingAnchor.constraint(equalTo: leadingAnchor),
             $0.trailingAnchor.constraint(equalTo: trailingAnchor),
             $0.bottomAnchor.constraint(equalTo: bottomAnchor)

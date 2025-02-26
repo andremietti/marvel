@@ -52,7 +52,7 @@ class DetailViewController: UIViewController {
     }
 
     private func setupNavigationController() {
-        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barTintColor = .red
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.topItem?.title = .defaultValue

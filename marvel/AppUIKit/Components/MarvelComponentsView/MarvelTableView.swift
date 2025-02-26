@@ -22,7 +22,7 @@ class MarvelTableView: SceneView {
 
     private var refreshControl = configure(UIRefreshControl()) {
         $0.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
-        $0.tintColor = .white
+        $0.tintColor = .lightGray
     }
 
     private lazy var tableView = configure(UITableView()) {
