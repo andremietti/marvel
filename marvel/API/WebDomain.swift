@@ -9,6 +9,7 @@ import Foundation
 
 enum WebDomain: String {
     case dev = "https://gateway.marvel.com/"
+//    https://gateway.marvel.com/v1/public
 }
 
 enum Keys: String {

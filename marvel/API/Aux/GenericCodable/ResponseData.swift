@@ -21,3 +21,4 @@ struct ResponseVoid {
     var request: URLRequest
     var timestamp: Date
 }
+

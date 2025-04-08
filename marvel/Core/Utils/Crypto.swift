@@ -10,16 +10,14 @@ import CommonCrypto
 
 class Crypto {
 
-
-    static func getAuthorization(ts: String) -> String {
-        let ts = ts
+    static func getAuthorization(intTs: String) -> String {
+        let intTs = intTs
         let privKey = Keys.privateKey.rawValue
         let pubKey = Keys.pubKey.rawValue
-        let params = ts + privKey + pubKey
+        let params = intTs + privKey + pubKey
 
         return params.md5
     }
-    
 }
 
 extension String {

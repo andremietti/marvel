@@ -64,8 +64,7 @@ class APIRest: APIRestProtocol {
                      completion: completion)
     }
 
-    func post<T, E>(endpoint: String,
-                    completion: @escaping CompletionResponse<T, E>) where T: Decodable, E: Decodable {
+    func post<T, E>(endpoint: String, completion: @escaping CompletionResponse<T, E>) where T: Decodable, E: Decodable {
 
         self.execute(method: .POST, .json, nil, endpoint: endpoint, params: nil, payload: nil, completion: completion)
     }
@@ -201,10 +200,10 @@ class APIRest: APIRestProtocol {
             print("[RESTAPI] Status: \(statusCode)")
             #endif
             if (200..<300).contains(statusCode) {
-                if let _data = data {
+                if let data = data {
                     let decoder = JSONDecoder()
                     do {
-                        resultData =  T.self == NoReply.self ? nil : try decoder.decode(T.self, from: _data)
+                        resultData =  T.self == NoReply.self ? nil : try decoder.decode(T.self, from: data)
                         let responseData = ResponseData(status: statusCode, data: resultData, responseData: data,
                                                         request: request, timestamp: Date())
                         print("[RESTAPI] ResponseData: \(responseData)")
@@ -212,7 +211,7 @@ class APIRest: APIRestProtocol {
                     } catch let error {
                         #if DEBUG
                         print("\(error)")
-                        print("\(String(describing: String(data: data!, encoding: .utf8)))")
+                        print("\(String(describing: String(data: data, encoding: .utf8)))")
                         #endif
                         let errorData = self.processError(.responseCodableFail, error: nil, request: request, data: data, statusCode: statusCode)
                         completion(false, nil, errorData)
@@ -355,7 +354,9 @@ class APIRest: APIRestProtocol {
         // Request
         task = session.dataTask(with: request, completionHandler: { [weak self] data, response, error in
             guard error == nil else {
-                completion(false, nil, ErrorData(timestamp: Date(), error: NSError(domain: error?.localizedDescription ?? "", code: 0, userInfo: nil)))
+                completion(false, nil, ErrorData(timestamp: Date(), error: NSError(domain: error?.localizedDescription ?? "",
+                                                                                   code: 0,
+                                                                                   userInfo: nil)))
                 return
             }
 
@@ -368,17 +369,17 @@ class APIRest: APIRestProtocol {
             print("[RESTAPI] Status: \(statusCode)")
             #endif
             if (200..<300).contains(statusCode) {
-                if let _data = data {
+                if let data = data {
                     let decoder = JSONDecoder()
                     do {
-                        resultData =  T.self == NoReply.self ? nil : try decoder.decode(T.self, from: _data)
+                        resultData =  T.self == NoReply.self ? nil : try decoder.decode(T.self, from: data)
                         let responseData = ResponseData(status: statusCode, data: resultData, responseData: data,
                                                         request: request, timestamp: Date())
                         completion(true, responseData, nil)
                     } catch let error {
                         #if DEBUG
                         print("\(error)")
-                        print("\(String(describing: String(data: _data, encoding: .utf8)))")
+                        print("\(String(describing: String(data: data, encoding: .utf8)))")
                         #endif
                         errorCode = .responseCodableFail
                     }
@@ -388,8 +389,8 @@ class APIRest: APIRestProtocol {
                 }
             } else {
                 errorCode = .statusCodeError
-                if let _data = data {
-                    errorData?.decode(data: _data)
+                if let data = data {
+                    errorData?.decode(data: data)
                 }
 
                 if let codeError = errorCode {
@@ -431,8 +432,8 @@ class APIRest: APIRestProtocol {
         let errorData: ErrorData<ErrorSpringCodable>? = ErrorData(timestamp: Date(), error: nil)
         var error: NSError?
 
-        if let _data = data {
-            errorData?.decode(data: _data)
+        if let data = data {
+            errorData?.decode(data: data)
         }
 
         if let codeError = errorCode {
@@ -456,7 +457,7 @@ class APIRest: APIRestProtocol {
         case .noDataResponse:
             return NSError(domain: "no data response fail", code: errorType.rawValue, userInfo: nil)
         case .statusCodeError:
-            return NSError(domain: "erro no servidor \(errorCode)", code: errorCode, userInfo: nil)
+            return NSError(domain: "server error \(errorCode)", code: errorCode, userInfo: nil)
         }
     }
 
@@ -486,7 +487,8 @@ class APIRest: APIRestProtocol {
                         return false
                     }
                     do {
-                        request.httpBody = try contentFunctions.createDataBodyJsonData(withParameters: paramDict)
+                        request.httpBody =
+                        try contentFunctions.createDataBodyJsonData(withParameters: paramDict)
                     } catch {
                         return false
                     }
@@ -502,7 +504,8 @@ class APIRest: APIRestProtocol {
         }
 
         if method == .GET {
-            if let  param = params, let url = request.url {
+            if let  param = params,
+                let url = request.url {
                 let urlWithComponents = self.queryItens(url: url, params: param)
                 request.url = urlWithComponents
             }
@@ -513,7 +516,7 @@ class APIRest: APIRestProtocol {
     }
 
     func extractErrorMsgFromResponseBody(body: Data) -> String? {
-        do{
+        do {
             let decoder = JSONDecoder()
             let resultBody = try decoder.decode(DefaulErrorMsg.self, from: body)
             return resultBody.message ?? nil
@@ -525,4 +528,5 @@ class APIRest: APIRestProtocol {
     func cancelTask() {
         task?.cancel()
     }
+    
 }

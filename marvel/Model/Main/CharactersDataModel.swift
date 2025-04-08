@@ -22,14 +22,13 @@ class CharactersDataModel {
         self.results = self.getCharacterResponseDataModel(characters: character.results)
     }
 
-
     private func getCharacterResponseDataModel(characters: [CharacterResponse]?) -> [CharacterResponseDataModel] {
         var localCharacters = [CharacterResponseDataModel]()
 
         guard let characters = characters  else { return [] }
         for char in characters {
-            let c = CharacterResponseDataModel(chatacter: char)
-            localCharacters.append(c)
+            let character = CharacterResponseDataModel(chatacter: char)
+            localCharacters.append(character)
         }
 
         return localCharacters

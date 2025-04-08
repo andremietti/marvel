@@ -23,8 +23,8 @@ struct KeychainWrapper<T> {
             return KeychainUtils.load(key, service: .privateKey) as? T ?? data
         }
         set {
-            guard let _newValue = newValue as? String else { return }
-            _ = KeychainUtils.save(key, _newValue, service: .privateKey)
+            guard let newValue = newValue as? String else { return }
+            _ = KeychainUtils.save(key, newValue, service: .privateKey)
             return
         }
     }

@@ -51,7 +51,6 @@ extension Optional where Wrapped: UIImage {
     }
 }
 
-
 extension Double: Defaultable {
     static var defaultValue: Double {
         0
